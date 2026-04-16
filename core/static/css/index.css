@@ -311,3 +311,43 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+/* 🔥 HAMBURGER */
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* 📱 MOBILE NAV */
+@media (max-width: 768px) {
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;              /* hide by default */
+    flex-direction: column;
+    width: 100%;
+    background: #FAF7F0;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    padding: 20px;
+    border-top: 1px solid #ddd;
+  }
+
+  .nav-links a {
+    margin: 10px 0;
+  }
+
+  /* when active */
+  .nav-links.active {
+    display: flex;
+  }
+
+  .navbar {
+    position: relative;
+  }
+}

@@ -17,7 +17,12 @@
 <nav class="navbar">
   <h2>SONIA MEHENDI STUDIO</h2>
 
-  <div class="nav-links">
+  <!-- ☰ Hamburger -->
+  <div class="menu-toggle" onclick="toggleMenu()">
+    <i class="fas fa-bars"></i>
+  </div>
+
+  <div class="nav-links" id="navLinks">
     <a href="/">Home</a>
     <a href="/gallery/">Gallery</a>
     <a href="/about/">About</a>
@@ -75,5 +80,11 @@
   </div>
 
 </footer>
+
+<script>
+  function toggleMenu() {
+    document.getElementById("navLinks").classList.toggle("active");
+  }
+</script>
 </body>
 </html>
