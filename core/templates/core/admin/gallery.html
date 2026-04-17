@@ -34,7 +34,7 @@
     {% for img in images %}
     <div class="gallery-card" data-category="{{ img.category.id }}">
 
-      <img src="{{ img.image.url }}" onclick="openLightbox('{{ img.image.url }}')">
+      <img src="{{ img.image }}" onclick="openLightbox('{{ img.image }}')">
 
     </div>
     {% endfor %}

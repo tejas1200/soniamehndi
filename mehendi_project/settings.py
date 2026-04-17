@@ -46,17 +46,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'core',
-    'cloudinary', 'cloudinary_storage',
 ]
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
-import cloudinary
+IMAGEKIT_PUBLIC_KEY="public_LFgMCNEZKAEvn6PxeKe52ZbeF0w="
+IMAGEKIT_PRIVATE_KEY="private_pb8yRLVdkRVtF+V7YOjClOhgwn0="
+IMAGEKIT_URL_ENDPOINT="https://ik.imagekit.io/lm9kmq2ux"
 
-cloudinary.config(
-    cloud_name=os.getenv('CLOUDINARY_CLOUD_NAME'),
-    api_key=os.getenv('CLOUDINARY_API_KEY'),
-    api_secret=os.getenv('CLOUDINARY_API_SECRET'),
-)
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

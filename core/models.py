@@ -8,7 +8,7 @@ class Category(models.Model):
 
 
 class Gallery(models.Model):
-    image = models.ImageField(upload_to='mehendi/')
+    image = models.URLField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 

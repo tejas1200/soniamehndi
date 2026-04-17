@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 from django.shortcuts import render, redirect
 from .models import Gallery, Category, Booking
+from .utils.imagekit import upload_to_imagekit
 
 def home(request):
     images = Gallery.objects.all()[:6]
@@ -60,26 +61,34 @@ def dashboard(request):
 
     return render(request, 'core/admin/dashboard.html', context)
 
-
+from .utils.imagekit import upload_to_imagekit
 @login_required
 def add_image(request):
     images = Gallery.objects.all().order_by('-created_at')
+
     if request.method == "POST":
-        image = request.FILES['image']
+        file = request.FILES['image']
         category_id = request.POST['category']
 
         category = Category.objects.get(id=category_id)
 
+        image_url = upload_to_imagekit(file)
+
         Gallery.objects.create(
-            image=image,
+            image=image_url,
             category=category
         )
 
         return redirect('/admin/')
 
     categories = Category.objects.all()
-    return render(request, 'core/admin/add_image.html', {'categories': categories, 'images': images})
 
+    return render(request, 'core/admin/add_image.html', {
+        'categories': categories,
+        'images': images
+    })
+
+    
 @login_required
 def edit_image(request, id):
     image = Gallery.objects.get(id=id)
